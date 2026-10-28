@@ -1,0 +1,46 @@
+# Segredos e configurações locais
+.env
+.env.*
+!.env.example
+!frontend/.env.development
+*.pem
+*.key
+
+# Dependências e ambientes
+node_modules/
+.venv/
+venv/
+.models/
+__pycache__/
+*.py[cod]
+
+# Builds, testes e dados de runtime
+dist/
+dist-ssr/
+*.tsbuildinfo
+.pytest_cache/
+.vite/
+.tmp/
+coverage/
+logs/
+backend/index/
+backend/data/raw/
+backend/data/normalized/
+backend/data/embeddings/
+backend/data/structured/
+backend/data/app_state/
+backend/data/backups/
+backend/data/releases/
+backend/data/attempts/
+backend/data/runs/
+backend/eval/runs/
+*.gguf
+*.zip
+
+# Ferramentas e editor
+.serena/
+.claude/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
