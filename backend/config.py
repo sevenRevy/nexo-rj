@@ -21,15 +21,12 @@ def _env(name: str, default: str) -> str:
 # Endpoint opcional de geração local; o padrão de geração usa OpenRouter.
 OLLAMA_URL = _env("OLLAMA_URL", "http://localhost:11434/v1")
 OLLAMA_API_KEY = _env("OLLAMA_API_KEY", "ollama")
-GENERATION_MODEL = _env("GENERATION_MODEL", "qwen3:8b")
+GENERATION_MODEL = _env("GENERATION_MODEL", "qcwind/qwen3-8b-instruct-Q4-K-M")
 MODEL_MIN_INTERVAL_SECONDS = float(_env("MODEL_MIN_INTERVAL_SECONDS", "10"))
 OPENROUTER_API_KEY = _env("OPENROUTER_API_KEY", "")
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
-# Modelo preferido das chamadas OpenRouter (geração/reformulação). O padrão
-# preserva o comportamento anterior: sem configurar, só o "openrouter/free" é
-# usado. A demo define explicitamente um modelo nomeado (ex. MiMo-V2.6-Flash) e
-# mantém o free como reserva quando ele estiver indisponível.
-OPENROUTER_MODEL = _env("OPENROUTER_MODEL", "openrouter/free")
+# Mesma seleção de geração do ambiente local de origem; Free é só reserva.
+OPENROUTER_MODEL = _env("OPENROUTER_MODEL", "xiaomi/mimo-v2.6-flash")
 # Reserva usada somente quando o modelo preferido está indisponível (rede,
 # timeout, 404/408/429/5xx). Erros de entrada não trocam de modelo.
 OPENROUTER_MODEL_FALLBACK = _env("OPENROUTER_MODEL_FALLBACK", "openrouter/free")

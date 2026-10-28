@@ -2,6 +2,32 @@
 
 Execute os comandos a partir da raiz do monorepositório, salvo indicação contrária. Backend e frontend são dois processos, mas pertencem ao mesmo repositório.
 
+## Ambiente local já preparado
+
+Nesta máquina, `nexo-rj` já tem a cópia completa do snapshot ativo dos originais, `v7-qwen-q8-2026-10-26`, sem mover arquivos nem reconstruir índices. Dados, pesos e credenciais continuam **fora do Git**, mas estão presentes no disco local deste projeto.
+
+Foram preparados:
+
+- 24 artefatos de runtime (5,36 GiB), com hashes conferidos contra `runtime_bundle.json`;
+- Qwen3-Embedding-0.6B.Q8_0 em `backend/.models/`;
+- os mesmos pesos do reranker `cross-encoder/mmarco-mMiniLMv2-L12-H384-v1`, copiados do cache local;
+- llama.cpp Vulkan b10578 em `backend/.tools/llama.cpp/`, com suas DLLs;
+- `.env` privado com a seleção original: `xiaomi/mimo-v2.6-flash`, reserva `openrouter/free` e embeddings Q8 locais;
+- `.venv` local com acesso aos pacotes Python já instalados nesta máquina (`--system-site-packages`), sem dependência do ambiente virtual dos repositórios originais;
+- dependências npm em `frontend/node_modules/`.
+
+Para iniciar após encerrar as instâncias existentes:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\iniciar.ps1
+```
+
+O comando abre três janelas: embeddings, backend e frontend. Acesse `http://localhost:5173`. Feche as três janelas para encerrar. Uma porta ocupada é recusada, para não reutilizar ou interromper silenciosamente uma instância de outro projeto. A primeira carga e a primeira validação de `/ready` podem levar alguns minutos neste corpus, especialmente com pouca RAM disponível.
+
+O caminho privado `RERANK_MODEL` aponta para os pesos copiados dentro deste projeto; ajuste-o no `.env` se mover a pasta. Não é necessário manter as pastas antigas para executar. A geração continua dependendo de internet e do provedor OpenRouter, como no ambiente original.
+
+As seções seguintes explicam a preparação de **uma nova máquina ou clone**, que não recebe os artefatos ignorados pelo Git. Para um ambiente Python totalmente isolado em outra máquina, use um venv normal e instale `requirements-lock.txt`.
+
 ## 1. Dependências
 
 - Python **3.14**, versão do CI; a compatibilidade com outras versões deve ser testada antes de adotá-las.
@@ -47,7 +73,7 @@ backend/index/<base>/...
 
 O snapshot esperado é `v7-qwen-q8-2026-10-26`. Preserve os arquivos e hashes do pacote: não gere outro manifesto apenas para contornar uma falha de validação. `SNAPSHOT_MANIFEST=runtime_bundle.json` já é o padrão.
 
-Para aproveitar dados já existentes nas pastas originais, **copie**, nunca mova ou crie vínculos de escrita para elas. Não copie `.env`, logs ou `data/app_state/`. Esta edição não copia automaticamente os vários GB do corpus.
+Para aproveitar dados já existentes nas pastas originais, **copie**, nunca mova ou crie vínculos de escrita para elas. Não copie logs ou `data/app_state/`. A configuração privada foi copiada para esta instalação local por autorização do proprietário; nunca versione o `.env` nem o distribua com o código. Um clone novo não baixa automaticamente os vários GB do corpus.
 
 ## 3. Embeddings Q8 locais
 
@@ -78,7 +104,7 @@ Não faça fallback para outro encoder: vetores com dimensão igual não são ne
 
 ## 4. Geração e rerank
 
-Em `backend/.env`, configure sua própria `OPENROUTER_API_KEY`. O padrão `LLM_PROVIDER_MODE=openrouter` evita dependência do servidor institucional. `openrouter/free` é um roteador de modelos gratuito sujeito a disponibilidade e limites; você pode definir um modelo compatível com saída JSON em `OPENROUTER_MODEL`.
+Em uma instalação nova, configure sua própria `OPENROUTER_API_KEY` em `backend/.env`. O padrão mantém a seleção do ambiente original: `LLM_PROVIDER_MODE=openrouter`, `OPENROUTER_MODEL=xiaomi/mimo-v2.6-flash` e `OPENROUTER_MODEL_FALLBACK=openrouter/free`. O modelo principal pode consumir créditos do provedor; a reserva gratuita está sujeita a disponibilidade e limites. O modelo opcional de geração no preset legado permanece `qcwind/qwen3-8b-instruct-Q4-K-M`; ele não é o encoder Q8 de consulta.
 
 Alternativamente, `LLM_PROVIDER_MODE=auto` tenta o endpoint definido em `OLLAMA_URL`, com `GENERATION_MODEL`, e usa OpenRouter como reserva. Esses parâmetros de **geração** não trocam os embeddings Q8. O servidor de embeddings da porta 18321 não é um modelo de chat.
 

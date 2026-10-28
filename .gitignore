@@ -11,6 +11,7 @@ node_modules/
 .venv/
 venv/
 .models/
+.tools/
 __pycache__/
 *.py[cod]
 

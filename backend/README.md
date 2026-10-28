@@ -7,7 +7,7 @@ Este diretório é parte do monorepositório NEXO RJ. Consulte o [README princip
 ## Configuração padrão
 
 - Embeddings: **Qwen3-Embedding-0.6B.Q8_0**, via llama.cpp em `http://127.0.0.1:18321/v1`.
-- Geração: OpenRouter, com chave própria em `.env`; o endpoint institucional não é obrigatório.
+- Geração: `xiaomi/mimo-v2.6-flash` via OpenRouter, com `openrouter/free` como reserva, mantendo a seleção local original. Chave somente em `.env`.
 - Rerank: cross-encoder local.
 - SQL: SQLite local; Postgres é opcional por `DATABASE_URL`.
 - Corpus: pacote externo identificado por `runtime_bundle.json`, extraído **neste diretório**.

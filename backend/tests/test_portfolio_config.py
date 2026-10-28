@@ -10,6 +10,7 @@ def test_defaults_use_local_q8_without_institutional_endpoint(monkeypatch):
         "EMBEDDING_PROVIDER", "EMBEDDING_MODEL", "OLLAMA_LOCAL_URL",
         "OLLAMA_LOCAL_EMBEDDING_MODEL", "OLLAMA_LOCAL_API_KEY", "OLLAMA_URL",
         "OLLAMA_API_KEY", "LLM_PROVIDER_MODE", "SNAPSHOT_MANIFEST",
+        "OPENROUTER_MODEL", "OPENROUTER_MODEL_FALLBACK", "GENERATION_MODEL",
     )
     for name in names:
         monkeypatch.delenv(name, raising=False)
@@ -23,6 +24,9 @@ def test_defaults_use_local_q8_without_institutional_endpoint(monkeypatch):
     )
     assert values["OLLAMA_URL"] == "http://localhost:11434/v1"
     assert values["LLM_PROVIDER_MODE"] == "openrouter"
+    assert values["OPENROUTER_MODEL"] == "xiaomi/mimo-v2.6-flash"
+    assert values["OPENROUTER_MODEL_FALLBACK"] == "openrouter/free"
+    assert values["GENERATION_MODEL"] == "qcwind/qwen3-8b-instruct-Q4-K-M"
     assert values["SNAPSHOT_MANIFEST"] == "runtime_bundle.json"
 
 

@@ -39,6 +39,16 @@ Detalhes: [arquitetura](backend/ARQUITETURA.md), [contrato HTTP](backend/docs/FR
 
 ## Execução local
 
+**Nesta máquina, o ambiente completo já está preparado**, com corpus, modelos e configuração privada copiados dos originais. Para iniciar após encerrar as instâncias existentes:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\iniciar.ps1
+```
+
+Abra `http://localhost:5173`. A instalação local foi verificada com consultas reais e navegador: [resultados da validação](docs/VALIDACAO_LOCAL.md). O [guia local](docs/EXECUCAO_LOCAL.md) distingue os arquivos já instalados no disco dos artefatos que não são distribuídos pelo Git.
+
+Para preparar **outra máquina ou um novo clone**:
+
 Pré-requisitos: **Python 3.14** (versão usada no CI), **Node.js 22+**, pacote de dados Q8 e `llama-server` do llama.cpp. Os pesos, índices e banco não estão no Git.
 
 1. Siga o [guia de instalação](docs/EXECUCAO_LOCAL.md) para instalar o corpus em `backend/` e subir os embeddings Q8 em `http://127.0.0.1:18321/v1`.
