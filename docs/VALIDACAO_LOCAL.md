@@ -51,7 +51,7 @@ Evidências locais, todas dentro de `.tmp/runtime/`: `api-test-results.json`, `s
 
 Os três modos de `iniciar.ps1` (`embeddings`, `backend` e `frontend`) foram executados e seus serviços retornaram HTTP 200. Também foram conferidos a sintaxe PowerShell e o bloqueio de porta ocupada, sem interromper serviços existentes. Os 29 testes direcionados de configuração e seleção de modelos passaram.
 
-As instâncias temporárias dos testes foram encerradas para não deixar processos em segundo plano. Para usar a aplicação, execute `powershell -ExecutionPolicy Bypass -File .\iniciar.ps1` na raiz do projeto. O modo padrão abre as três janelas de serviço. O resultado dos testes de inicialização está em `.tmp/runtime/launcher-test-results.json`.
+As instâncias temporárias dos testes foram encerradas para não deixar processos em segundo plano. Para usar a aplicação, execute `powershell -ExecutionPolicy Bypass -File .\iniciar.ps1` na raiz do projeto. Atualmente, o modo padrão inicia os três serviços em segundo plano, sem abrir janelas; use `iniciar.ps1 -Parar` para encerrá-los. O resultado dos testes de inicialização está em `.tmp/runtime/launcher-test-results.json`.
 
 ## Independência e limites
 

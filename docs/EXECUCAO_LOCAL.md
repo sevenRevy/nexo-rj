@@ -22,7 +22,13 @@ Para iniciar após encerrar as instâncias existentes:
 powershell -ExecutionPolicy Bypass -File .\iniciar.ps1
 ```
 
-O comando abre três janelas: embeddings, backend e frontend. Acesse `http://localhost:5173`. Feche as três janelas para encerrar. Uma porta ocupada é recusada, para não reutilizar ou interromper silenciosamente uma instância de outro projeto. A primeira carga e a primeira validação de `/ready` podem levar alguns minutos neste corpus, especialmente com pouca RAM disponível.
+O comando inicia embeddings, backend e frontend em segundo plano, sem abrir janelas. Acesse `http://localhost:5173`. Os logs de cada serviço ficam em `.tmp/runtime/<servico>.stdout.log` e `.tmp/runtime/<servico>.stderr.log` e são substituídos a cada inicialização. Para encerrar os processos iniciados pelo script neste projeto:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\iniciar.ps1 -Parar
+```
+
+Uma porta ocupada é recusada, para não reutilizar ou interromper silenciosamente uma instância de outro projeto. A primeira carga e a primeira validação de `/ready` podem levar alguns minutos neste corpus, especialmente com pouca RAM disponível. Para acompanhar um serviço no terminal, execute `iniciar.ps1 -Servico embeddings`, `-Servico backend` ou `-Servico frontend` após encerrar a respectiva instância.
 
 O caminho privado `RERANK_MODEL` aponta para os pesos copiados dentro deste projeto; ajuste-o no `.env` se mover a pasta. Não é necessário manter as pastas antigas para executar. A geração continua dependendo de internet e do provedor OpenRouter, como no ambiente original.
 

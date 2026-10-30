@@ -3,7 +3,8 @@
 [CmdletBinding()]
 param(
     [ValidateSet("todos", "embeddings", "backend", "frontend")]
-    [string]$Servico = "todos"
+    [string]$Servico = "todos",
+    [switch]$Parar
 )
 
 $ErrorActionPreference = "Stop"
@@ -14,6 +15,25 @@ $llama = Join-Path $backend ".tools\llama.cpp\llama-server.exe"
 $modelo = Join-Path $backend ".models\Qwen3-Embedding-0.6B.Q8_0.gguf"
 $portas = @{ embeddings = 18321; backend = 8080; frontend = 5173 }
 $servicos = if ($Servico -eq "todos") { @("embeddings", "backend", "frontend") } else { @($Servico) }
+
+if ($Parar) {
+    # Identifica somente os wrappers deste projeto, nunca um processo apenas pela porta.
+    $processos = @(Get-CimInstance Win32_Process -Filter "Name = 'powershell.exe'" | Where-Object {
+        $_.CommandLine -and $_.CommandLine.Contains("-File `"$PSCommandPath`"")
+    })
+    foreach ($nome in $servicos) {
+        foreach ($processo in $processos) {
+            if ($processo.CommandLine -match "-Servico\s+$nome(?:\s|$)") {
+                & taskkill.exe /PID $processo.ProcessId /T /F
+                if ($LASTEXITCODE -ne 0) {
+                    throw "Nao foi possivel encerrar $nome (PID $($processo.ProcessId))."
+                }
+            }
+        }
+    }
+    Write-Host "Encerramento dos servicos deste projeto concluido."
+    return
+}
 
 foreach ($nome in $servicos) {
     $porta = $portas[$nome]
@@ -34,14 +54,19 @@ foreach ($caminho in $necessarios) {
 }
 
 if ($Servico -eq "todos") {
+    $logs = Join-Path $PSScriptRoot ".tmp\runtime"
+    New-Item -ItemType Directory -Path $logs -Force | Out-Null
     foreach ($nome in $servicos) {
-        Start-Process powershell.exe -WorkingDirectory $PSScriptRoot -ArgumentList @(
-            "-NoProfile", "-ExecutionPolicy", "Bypass", "-NoExit", "-File", "`"$PSCommandPath`"", "-Servico", $nome
-        )
+        Start-Process powershell.exe -WorkingDirectory $PSScriptRoot -WindowStyle Hidden `
+            -RedirectStandardOutput (Join-Path $logs "$nome.stdout.log") `
+            -RedirectStandardError (Join-Path $logs "$nome.stderr.log") -ArgumentList @(
+                "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "`"$PSCommandPath`"", "-Servico", $nome
+            )
     }
     Write-Host "Frontend: http://localhost:5173"
     Write-Host "Backend:  http://localhost:8080"
-    Write-Host "A primeira carga pode levar alguns minutos. Feche as tres janelas para encerrar."
+    Write-Host "Servicos em segundo plano. Logs: $logs"
+    Write-Host "A primeira carga pode levar alguns minutos. Para encerrar: .\iniciar.ps1 -Parar"
     return
 }
 

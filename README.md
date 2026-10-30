@@ -45,6 +45,8 @@ Detalhes: [arquitetura](backend/ARQUITETURA.md), [contrato HTTP](backend/docs/FR
 powershell -ExecutionPolicy Bypass -File .\iniciar.ps1
 ```
 
+Os três serviços iniciam em segundo plano, sem abrir janelas; os logs ficam em `.tmp/runtime/`. Para encerrar, execute `powershell -ExecutionPolicy Bypass -File .\iniciar.ps1 -Parar`.
+
 Abra `http://localhost:5173`. A instalação local foi verificada com consultas reais e navegador: [resultados da validação](docs/VALIDACAO_LOCAL.md). O [guia local](docs/EXECUCAO_LOCAL.md) distingue os arquivos já instalados no disco dos artefatos que não são distribuídos pelo Git.
 
 Para preparar **outra máquina ou um novo clone**:
