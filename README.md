@@ -169,7 +169,11 @@ npm run check:backend
 ## Créditos
 
 - **Apresentação individual e edição de portfólio:** João Pedro Félix Reis.
-- **Trabalho em grupo:** João Pedro, Renato, Diogo, Eduarda, Marco e Pâmela.
+- **Trabalho em grupo:** João Pedro, [Renato](https://github.com/limongi1234), [Diogo](https://github.com/Diogooliveira10), [Eduarda](https://github.com/Etuarda), [Marco](https://github.com/MarcoBritoDev) e [Pâmela](https://github.com/PamFreitaz).
 - **Contexto:** Residência TIC em Trilhas · PUC-Rio · Instituto ECOA.
 
 [Créditos completos](docs/CREDITOS.md).
+
+---
+
+*TIC em Trilhas · PUC-Rio · Instituto ECOA · MCTI Futuro · Softex*
