@@ -1,6 +1,30 @@
+<p align="center">
+  <img src="frontend/src/assets/nexo.png" alt="Logo NEXO RJ" width="320" />
+</p>
+
 # NEXO RJ
 
 Consulta inteligente sobre contratações públicas do Estado do Rio de Janeiro, com **Adaptive RAG**, recuperação híbrida e respostas acompanhadas de fontes.
+
+<p align="center">
+  <img alt="React 19" src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&amp;logo=react&amp;logoColor=06131f" />
+  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-frontend-3178C6?style=for-the-badge&amp;logo=typescript&amp;logoColor=white" />
+  <img alt="Vite 6" src="https://img.shields.io/badge/Vite-6-646CFF?style=for-the-badge&amp;logo=vite&amp;logoColor=white" />
+  <img alt="Python 3.14" src="https://img.shields.io/badge/Python-3.14-3776AB?style=for-the-badge&amp;logo=python&amp;logoColor=white" />
+  <img alt="FastAPI" src="https://img.shields.io/badge/FastAPI-API-009688?style=for-the-badge&amp;logo=fastapi&amp;logoColor=white" />
+  <img alt="OpenRouter" src="https://img.shields.io/badge/OpenRouter-gera%C3%A7%C3%A3o-111827?style=for-the-badge" />
+  <img alt="FAISS" src="https://img.shields.io/badge/FAISS-busca_vetorial-0F766E?style=for-the-badge" />
+</p>
+
+<p align="center">
+  <a href="#o-que-o-sistema-faz">Funcionalidades</a> |
+  <a href="#demonstração">Demonstração</a> |
+  <a href="#arquitetura">Arquitetura</a> |
+  <a href="#execução-local">Como rodar</a> |
+  <a href="#verificações">Verificações</a> |
+  <a href="#dados-segurança-e-publicação">Dados e segurança</a> |
+  <a href="docs/CREDITOS.md">Créditos</a>
+</p>
 
 Esta edição de portfólio, mantida por João Pedro Félix Reis, reúne backend e frontend em um único repositório. O código tem origem colaborativa: veja [créditos, origem e licenciamento](docs/CREDITOS.md).
 
@@ -14,6 +38,44 @@ Esta edição de portfólio, mantida por João Pedro Félix Reis, reúne backend
 - Oferece exploração de contratações, documentos, órgãos e fontes oficiais.
 
 Não é uma ferramenta de parecer jurídico nem substitui a conferência dos dados no PNCP. O suplemento de conversas é **sintético** e não comprova fatos reais.
+
+## Demonstração
+
+Trechos curtos da aplicação em funcionamento, extraídos da apresentação individual. As prévias são animadas; clique nelas ou nos links para abrir os clipes em MP4, sem áudio.
+
+### Consulta estruturada e filtros
+
+Uma pergunta sobre contratos assinados em 2025 retorna a contagem do acervo, os filtros aplicados e os avisos de escopo. Os cálculos usam SQL parametrizado, sem delegar a conta ao modelo de linguagem.
+
+[![Consulta sobre contratos assinados em 2025, com resultado, filtros e limitações do acervo](docs/media/consulta-sql.gif)](docs/media/consulta-sql.mp4)
+
+[Abrir clipe em MP4 · 15 s](docs/media/consulta-sql.mp4)
+
+### Busca documental e fontes
+
+A consulta sobre a Lei 14.133/2021 mostra o andamento da busca e, depois, a resposta com suas fontes. **Ver andamento** apresenta etapas aproximadas; não é o registro definitivo da execução.
+
+[![Busca sobre a Lei 14.133/2021, do andamento à resposta com quatro fontes](docs/media/busca-documental.gif)](docs/media/busca-documental.mp4)
+
+[Abrir clipe em MP4 · 19,5 s](docs/media/busca-documental.mp4)
+
+### Caminho da pergunta e detalhes
+
+Após a resposta, o **Caminho da pergunta** permite abrir **Ver detalhes** e conferir as etapas registradas, as evidências recuperadas e os rankings da busca por significado e por palavras.
+
+[![Painel Caminho da pergunta com detalhes das buscas e pontuações dos candidatos](docs/media/caminho-pergunta.gif)](docs/media/caminho-pergunta.mp4)
+
+[Abrir clipe em MP4 · 17,5 s](docs/media/caminho-pergunta.mp4)
+
+### Limites e segurança
+
+A demonstração também mostra recusas: um pedido de dados bancários e uma tentativa de obter credenciais não recebem as informações solicitadas.
+
+[![Recusas a um pedido de dados bancários e a uma tentativa de obter uma chave de API](docs/media/seguranca.gif)](docs/media/seguranca.mp4)
+
+[Abrir clipe em MP4 · 19,5 s](docs/media/seguranca.mp4)
+
+Os recortes preservam as consultas gravadas, mas incluem pausas de leitura da apresentação: **não representam um benchmark de latência**. A interface e os resultados pertencem ao snapshot demonstrado, não a um censo atualizado do Estado. [Origem e formatos dos clipes](docs/media/README.md).
 
 ## Arquitetura
 
@@ -98,4 +160,10 @@ npm run check:backend
 - Para outra origem do frontend, configure `CORS_ALLOW_ORIGINS`; nenhuma origem de um projeto anterior é liberada por padrão.
 - Não há workflow de deploy. Publicação e criação do remoto exigem configuração explícita.
 
-O aviso MIT do backend foi preservado em [backend/LICENSE](backend/LICENSE). O frontend de origem não apresenta licença própria; esta edição não presume autorização de relicenciamento. Veja [CREDITOS.md](docs/CREDITOS.md) antes de publicar.
+## Créditos
+
+- **Apresentação individual e edição de portfólio:** João Pedro Félix Reis.
+- **Trabalho em grupo:** João Pedro, Renato, Diogo, Eduarda, Marco e Pâmela.
+- **Contexto:** Residência TIC em Trilhas · PUC-Rio · Instituto ECOA.
+
+[Créditos completos](docs/CREDITOS.md).
