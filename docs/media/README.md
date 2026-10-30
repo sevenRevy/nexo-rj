@@ -16,6 +16,8 @@ Cada arquivo-base possui duas versões:
 
 Os recortes mantêm a velocidade da apresentação e retiram suas bordas, títulos externos e legendas de narração para destacar a interface. A trilha e a voz não estão incluídas. As pausas de leitura já presentes na montagem foram preservadas; os tempos não representam a latência real do sistema.
 
-Os recortes foram extraídos de uma apresentação individual de cinco minutos. A interface, os rótulos e os resultados refletem o snapshot da gravação; não são dados atualizados em tempo real nem um censo das contratações do Estado.
+A [apresentação completa](../../nexo-rj-apresentacao.mp4) fica na raiz do repositório: cinco minutos, narração em português e logos institucionais. A interface, os rótulos e os resultados refletem o snapshot da gravação; não são dados atualizados em tempo real nem um censo das contratações do Estado.
+
+O vídeo completo foi otimizado de 73,77 para **21,17 MiB**, abaixo do [limite de 25 MiB para upload pelo navegador do GitHub](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github). A codificação usa H.264, `preset=slow`, `crf=26`, 1920 × 1080, 30 fps e `faststart`. Os 300 segundos e os 9.000 quadros foram mantidos; todos os pacotes de áudio AAC e seus tempos são idênticos aos da versão anterior, preservando o tratamento e o volume reduzido. Foram conferidos a decodificação integral, a similaridade de imagem por amostragem e quadros de abertura, interface e encerramento. Os [créditos da música](../CREDITOS.md#trilha-sonora-da-apresentação) devem acompanhar a publicação.
 
 Os arquivos foram gerados com o FFmpeg, sem iniciar os serviços da aplicação. Para todos os MP4s, foram conferidas duração, resolução, taxa de quadros, ausência de áudio e decodificação integral. Todos os quadros dos GIFs também foram decodificados, com duração e repetição verificadas.

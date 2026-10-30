@@ -29,3 +29,19 @@ Foram deixados de fora acompanhamento de alunos, enunciados, entregas acadêmica
 - **Dependências e modelos:** mantêm suas próprias licenças; não estão sendo relicenciados por este repositório.
 
 Por esse motivo, não foi criada uma licença global que atribua direitos não verificados sobre todos os arquivos.
+
+## Trilha sonora da apresentação
+
+A [apresentação completa](../nexo-rj-apresentacao.mp4) utiliza a faixa **“Cipher”, de Kevin MacLeod (incompetech.com)**, sob **Creative Commons Attribution 4.0 International (CC BY 4.0)**.
+
+> “Cipher” Kevin MacLeod (incompetech.com)
+>
+> Licensed under Creative Commons: By Attribution 4.0 License
+>
+> https://creativecommons.org/licenses/by/4.0/
+>
+> Trilha adaptada com cortes, repetição, fades e redução de volume.
+
+[Faixa no catálogo oficial](https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100844) · [Condições de licenciamento](https://incompetech.com/music/royalty-free/licenses/).
+
+O crédito também aparece no encerramento. Preserve a atribuição ao publicar o vídeo em outros locais. A licença da faixa não é uma licença global do software, dos demais materiais ou das marcas institucionais, nem implica endosso do compositor.

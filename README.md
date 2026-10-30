@@ -41,6 +41,8 @@ Não é uma ferramenta de parecer jurídico nem substitui a conferência dos dad
 
 ## Demonstração
 
+**[Assistir à apresentação completa · 5 min · 1080p · 21,17 MiB](nexo-rj-apresentacao.mp4)** — apresentação individual de João Pedro Félix Reis, com narração em português e logos institucionais. [Crédito da trilha sonora](docs/CREDITOS.md#trilha-sonora-da-apresentação).
+
 Trechos curtos da aplicação em funcionamento, extraídos da apresentação individual. As prévias são animadas; clique nelas ou nos links para abrir os clipes em MP4, sem áudio.
 
 ### Consulta estruturada e filtros
