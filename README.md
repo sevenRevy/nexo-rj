@@ -41,9 +41,7 @@ Não é uma ferramenta de parecer jurídico nem substitui a conferência dos dad
 
 ## Demonstração
 
-**[Assistir à apresentação completa · 5 min · 1080p · 21,17 MiB](nexo-rj-apresentacao.mp4)** — apresentação individual de João Pedro Félix Reis, com narração em português e logos institucionais. [Crédito da trilha sonora](docs/CREDITOS.md#trilha-sonora-da-apresentação).
-
-Trechos curtos da aplicação em funcionamento, extraídos da apresentação individual. As prévias são animadas; clique nelas ou nos links para abrir os clipes em MP4, sem áudio.
+**[Assistir à apresentação completa · 5 min · 1080p · 21,17 MiB](nexo-rj-apresentacao.mp4)** — [Crédito da trilha sonora](docs/CREDITOS.md#trilha-sonora-da-apresentação).
 
 ### Consulta estruturada e filtros
 
@@ -164,7 +162,6 @@ npm run check:backend
 - Pacote de runtime, modelos, `.env`, logs e histórico permanecem fora do Git. Há configurações de corpus, inventários históricos e amostras sintéticas para reprodução e testes.
 - Chaves pertencem apenas ao backend; variáveis `VITE_*` são públicas no navegador.
 - Para outra origem do frontend, configure `CORS_ALLOW_ORIGINS`; nenhuma origem de um projeto anterior é liberada por padrão.
-- Não há workflow de deploy. Publicação e criação do remoto exigem configuração explícita.
 
 ## Créditos
 
