@@ -117,7 +117,11 @@ Para preparar **outra máquina ou um novo clone**:
 
 Pré-requisitos: **Python 3.14** (versão usada no CI), **Node.js 22+**, pacote de dados Q8 e `llama-server` do llama.cpp. Os pesos, índices e banco não estão no Git.
 
-1. Siga o [guia de instalação](docs/EXECUCAO_LOCAL.md) para instalar o corpus em `backend/` e subir os embeddings Q8 em `http://127.0.0.1:18321/v1`.
+1. **[Baixe o pacote de dados V7/Q8 no Google Drive](https://drive.google.com/file/d/1Zgt4b57sXZeGI0M6qz61ePk5h5SWh0vx/view?usp=drive_link)** e extraia seu conteúdo **dentro de `backend/`**, não na raiz do repositório.
+
+   O download é **manual**: clonar o repositório ou executar os scripts de instalação não baixa o corpus. Após a extração, devem existir `backend/runtime_bundle.json`, `backend/data/structured/base_estruturada.sqlite` e `backend/index/manifest.json`.
+
+   Consulte o [inventário do pacote](backend/CORPUS_INVENTORY.md) e siga o [guia de instalação](docs/EXECUCAO_LOCAL.md#2-corpus-q8) para validar os dados e preparar separadamente os modelos e o servidor de embeddings Q8 em `http://127.0.0.1:18321/v1`.
 2. Copie `backend/.env.example` para `backend/.env` e configure sua própria `OPENROUTER_API_KEY` e modelo de geração. Não há dependência obrigatória do endpoint da turma.
 3. Inicie o backend:
 

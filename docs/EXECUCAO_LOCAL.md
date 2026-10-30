@@ -64,7 +64,7 @@ Os scripts `scripts/setup.ps1` e `scripts/setup.sh` também preparam o ambiente.
 
 O Git contém código, testes, configurações e metadados; **não contém** o corpus completo, SQLite de runtime, FAISS nem os pesos.
 
-O [inventário](../backend/CORPUS_INVENTORY.md) preserva a referência do pacote Q8 disponibilizada pelo projeto original. O link externo não foi republicado nem sua disponibilidade é garantida por este repositório.
+O [inventário](../backend/CORPUS_INVENTORY.md) e o README trazem o link do pacote Q8 disponibilizado pelo projeto original. O download é manual, e a disponibilidade do link externo não é garantida por este repositório.
 
 Extraia o pacote **dentro de `backend/`**, de modo que existam:
 
